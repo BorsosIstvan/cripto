@@ -7,6 +7,7 @@ public class Block {
 	private String data; //our data will be a simple message.
 	private long timeStamp; //as number of milliseconds since 1/1/1970.
 	private int nonce;
+	private long minedTime; //added to calculate mined time.
 	
 	//Block Constructor.  
 	public Block(String data,String previousHash ) {
@@ -35,7 +36,9 @@ public class Block {
 			nonce = (int)(Math.random()*999999999); // generate random number beetven 0 to 9 mil.
 			hash = calculateHash();
 		}
+		minedTime = new Date().getTime() - timeStamp;
 		System.out.println("Block Mined!!! : " + hash);
+		System.out.println("Block mined in : " + minedTime + " milliseconds.");
 	}
 	
 
