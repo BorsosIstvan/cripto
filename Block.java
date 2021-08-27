@@ -31,7 +31,8 @@ public class Block {
 	public void mineBlock(int difficulty) {
 		String target = new String(new char[difficulty]).replace('\0', '0'); //Create a string with difficulty * "0" 
 		while(!hash.substring( 0, difficulty).equals(target)) {
-			nonce ++;
+//			nonce ++;
+			nonce = (int)(Math.random()*999999999); // generate random number beetven 0 to 9 mil.
 			hash = calculateHash();
 		}
 		System.out.println("Block Mined!!! : " + hash);
