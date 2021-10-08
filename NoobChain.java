@@ -1,14 +1,14 @@
+
 package cripto;
 
 import java.util.ArrayList;
-import com.google.gson.GsonBuilder;
+
 
 public class NoobChain {
-	
-	public static ArrayList<Block> blockchain = new ArrayList<Block>();
-	public static int difficulty = 5;
 
-	public static void main(String[] args) {	
+	public static ArrayList<Block> blockchain = new ArrayList<Block>();
+	public static int difficulty = 3;
+    public static void main(String[] args) {
 		//add our blocks to the blockchain ArrayList:
 		
 		blockchain.add(new Block("Hi im the first block", "0"));
@@ -24,12 +24,17 @@ public class NoobChain {
 		blockchain.get(2).mineBlock(difficulty);	
 		
 		System.out.println("\nBlockchain is Valid: " + isChainValid());
-		
-		String blockchainJson = new GsonBuilder().setPrettyPrinting().create().toJson(blockchain);
-		System.out.println("\nThe block chain: ");
-		System.out.println(blockchainJson);
-	}
-	
+                System.out.println();
+                
+                for(Block bc:blockchain){
+//                    System.out.println(bc.getPreviousHash());
+                    System.out.println(bc.getData());
+                    System.out.println(bc.getTimeStamp());
+                    System.out.println(bc.getNonce());
+                    System.out.println(bc.getHash());
+                }
+
+    }
 	public static Boolean isChainValid() {
 		Block currentBlock; 
 		Block previousBlock;
@@ -56,5 +61,5 @@ public class NoobChain {
 			}
 		}
 		return true;
-	}
+	}    
 }

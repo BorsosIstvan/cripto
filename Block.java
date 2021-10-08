@@ -1,10 +1,11 @@
+
 package cripto;
 
 import java.util.Date;
 
+
 public class Block {
-	
-	public String hash;
+    	public String hash;
 	public String previousHash; 
 	private String data; //our data will be a simple message.
 	private long timeStamp; //as number of milliseconds since 1/1/1970.
@@ -19,6 +20,27 @@ public class Block {
 		
 		this.hash = calculateHash(); //Making sure we do this after we set the other values.
 	}
+
+    public String getHash() {
+        return hash;
+    }
+
+    public String getPreviousHash() {
+        return previousHash;
+    }
+
+    public String getData() {
+        return data;
+    }
+
+    public int getNonce() {
+        return nonce;
+    }
+
+    public long getTimeStamp() {
+        return timeStamp;
+    }
+
 	
 	//Calculate new hash based on blocks contents
 	public String calculateHash() {
@@ -42,6 +64,4 @@ public class Block {
 		System.out.println("Block Mined!!! : " + hash);
 		System.out.println("Block mined in : " + minedTime + " milliseconds.");
 	}
-	
-
 }
